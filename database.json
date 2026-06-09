@@ -1,0 +1,47 @@
+{
+  "products": [
+    {
+      "_id": "1",
+      "name": "xyz",
+      "image": "zz",
+      "category": "woven-nicks",
+      "price": 0,
+      "description": "",
+      "stock": 0,
+      "createdAt": "2026-05-13T22:30:11.036Z"
+    },
+    {
+      "_id": "2",
+      "name": "woven ",
+      "image": "https://res.cloudinary.com/dgzcqgmxq/image/upload/v1778714508/products/vk2rbwiyy6dtbuc827tn.png",
+      "imagePublicId": "",
+      "category": "woven-nicks",
+      "price": 30,
+      "description": "xyz",
+      "stock": 2,
+      "createdAt": "2026-05-13T23:21:59.449Z"
+    },
+    {
+      "_id": "3",
+      "name": "woven",
+      "image": "https://res.cloudinary.com/dgzcqgmxq/image/upload/v1778715164/products/meyz5nal0y7rkfyjhscl.png",
+      "category": "woven-laises",
+      "price": 3,
+      "description": "xyz",
+      "stock": 123,
+      "createdAt": "2026-05-13T23:32:55.831Z"
+    },
+    {
+      "_id": "4",
+      "name": "monogram",
+      "image": "https://res.cloudinary.com/dgzcqgmxq/image/upload/v1778715231/products/txo1nf8e47qtgx9g6i2d.jpg",
+      "category": "woven-monograms",
+      "price": 33,
+      "description": "xyz",
+      "stock": 4,
+      "createdAt": "2026-05-13T23:33:53.152Z"
+    }
+  ],
+  "inquiries": [],
+  "nextId": 5
+}

@@ -1,8 +1,5 @@
 import React from 'react';
 import Image from 'next/image';
-import { Select } from '@/components/ui/select';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
 
 function ShopProducts() {
   const images = Array.from({ length: 15 }, (_, i) => `/shop-detail/ShopProducts${i + 1}.png`);

@@ -1,24 +1,26 @@
-import { Facebook, Twitter, Instagram, Youtube, PinIcon } from 'lucide-react'
+import { Facebook, Twitter, Instagram, Youtube, Linkedin } from 'lucide-react'
 import Link from "next/link"
 
 export default function SocialIcons() {
   const icons = [
-    { Icon: Facebook, color: 'text-[#1E1E1E]' },
-    { Icon: Twitter, color: 'text-[#1E1E1E]' },
-    { Icon: Instagram, color: 'text-[#1E1E1E]' },
-    { Icon: Youtube, color: 'text-[#FF9F0D]' },
-    { Icon: PinIcon, color: 'text-[#1E1E1E]' },
+    { Icon: Facebook, href: 'https://facebook.com' },
+    { Icon: Twitter, href: 'https://twitter.com' },
+    { Icon: Instagram, href: 'https://instagram.com' },
+    { Icon: Youtube, href: 'https://youtube.com' },
+    { Icon: Linkedin, href: 'https://linkedin.com' }, // Textile business ke liye LinkedIn zaroori hai
   ]
 
   return (
-    <div className="flex justify-center space-x-2 md:space-x-4">
-      {icons.map(({ Icon, color }, index) => (
+    <div className="flex justify-center space-x-3 md:space-x-4">
+      {icons.map(({ Icon, href }, index) => (
         <Link
           key={index}
-          href="#"
-          className={`bg-white p-1.5 md:p-2 rounded ${color} hover:bg-[#FF9F0D] hover:text-white transition duration-300`}
+          href={href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="bg-[#162033] p-2 md:p-2.5 rounded-lg text-gray-400 hover:bg-blue-600 hover:text-white transition-all duration-300 border border-gray-800 hover:border-blue-500 shadow-lg group"
         >
-          <Icon size={16} />
+          <Icon size={18} className="group-hover:scale-110 transition-transform duration-300" />
         </Link>
       ))}
     </div>

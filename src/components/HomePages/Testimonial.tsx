@@ -1,36 +1,36 @@
 'use client'
 import { useState, useEffect } from 'react'
 import Image from 'next/image'
-import { Great_Vibes } from 'next/font/google'
+import { Inter } from 'next/font/google'
 import { Button } from '@/components/ui/button'
 import { motion, AnimatePresence } from 'framer-motion'
 
-const VibeFont = Great_Vibes({ subsets: ['latin'], weight: ['400'] })
+const inter = Inter({ subsets: ['latin'] })
 
 const testimonials = [
   {
     id: 1,
-    name: 'Alamin Hasan',
-    role: 'Food Specialist',
+    name: 'Ahmed Raza',
+    role: 'CEO, Urban Threads',
     image: '/profile.png',
-    quote: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque diam pellentesque bibendum non dui volutpat fringilla bibendum.',
-    rating: 4,
+    quote: 'The high-density woven labels from H.B Enterprises transformed our brand identity. Their Müller loom precision is unmatched in the Karachi market.',
+    rating: 5,
   },
   {
     id: 2,
-    name: 'Sarah Lee',
-    role: 'Marketing Expert',
+    name: 'Sarah Khan',
+    role: 'Production Manager, Elite Apparel',
     image: '/profile2.png',
-    quote: 'Donec ut lorem eget arcu fringilla ultrices sit amet et ante. Sed malesuada mollis enim, a ullamcorper sem posuere eu.',
+    quote: 'Fastest turnaround time for custom patches. We needed 10,000 labels in a week, and they delivered with 99% accuracy. Truly professional.',
     rating: 5,
   },
   {
     id: 3,
-    name: 'John Doe',
-    role: 'Web Developer',
+    name: 'Zeeshan Malik',
+    role: 'Founder, ZM Sportswear',
     image: '/profile3.png',
-    quote: 'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
-    rating: 3,
+    quote: 'Their leather patches added a premium feel to our denim line. The embossing depth and quality are consistent across every single piece.',
+    rating: 4,
   },
 ]
 
@@ -38,14 +38,11 @@ export default function TestimonialsSection() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0)
   const [isAutoPlaying, setIsAutoPlaying] = useState(true)
 
-  // Auto-advance testimonials
   useEffect(() => {
     if (!isAutoPlaying) return
-
     const timer = setInterval(() => {
       setCurrentTestimonial((prev) => (prev + 1) % testimonials.length)
     }, 5000)
-
     return () => clearInterval(timer)
   }, [isAutoPlaying])
 
@@ -55,57 +52,65 @@ export default function TestimonialsSection() {
   }
 
   return (
-    <section className="bg-gradient-to-br from-black to-gray-900 text-white py-16 md:py-24 relative overflow-hidden">
-      <div className="container mx-auto px-4 max-w-4xl">
+    <section className="border-gray-800 text-white py-16 md:py-24 relative overflow-hidden border-t border-gray-900">
+      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+        
+        {/* Header Section */}
         <div className="text-center mb-16">
-          <h2 className={`${VibeFont.className} text-amber-500 text-4xl md:text-5xl mb-4`}>
-            Testimonials
+          <p className="text-blue-500 font-bold tracking-[0.2em] uppercase text-sm mb-2">
+            Client Success
+          </p>
+          <h2 className={`${inter.className} text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-gray-800`}>
+            Trusted by <span className="text-blue-600">Global Brands</span>
           </h2>
-          <h3 className="text-3xl md:text-4xl font-bold"><span className='text-amber-500'>Wh</span>
-            at our clients are saying
-          </h3>
         </div>
 
-        <div className="bg-white/95 backdrop-blur-sm text-black p-8 md:p-12 rounded-2xl shadow-2xl relative">
+        {/* Testimonial Card */}
+        <div className="bg-[#0A0F1C] border border-blue-900/30 backdrop-blur-sm text-white p-8 md:p-12 rounded-2xl shadow-2xl relative">
+          
+          {/* Profile Image */}
           <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <div className="relative w-20 h-20 md:w-24 md:h-24">
+              <div className="absolute inset-0 bg-blue-600 rounded-full blur-md opacity-20"></div>
               <Image
                 src={testimonials[currentTestimonial].image}
                 alt={testimonials[currentTestimonial].name}
                 fill
-                className="rounded-full border-4 border-white shadow-lg object-cover"
+                className="rounded-full border-4 border-[#0A0F1C] shadow-lg object-cover z-10"
               />
             </div>
           </div>
 
-          <div className="text-6xl md:text-7xl text-amber-500 opacity-30 absolute top-8 left-8">
+          {/* Quote Icon */}
+          <div className="text-6xl md:text-7xl text-blue-600 opacity-20 absolute top-8 left-8 font-serif">
             &quot;
           </div>
 
           <AnimatePresence mode="wait">
             <motion.div
               key={currentTestimonial}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.5 }}
-              className="pt-8"
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.4 }}
+              className="pt-8 text-center"
             >
-              <p className="text-gray-600 text-lg md:text-xl text-center mb-8">
+              <p className="text-gray-300 text-lg md:text-xl italic mb-8 leading-relaxed">
                 {testimonials[currentTestimonial].quote}
               </p>
 
+              {/* Star Rating (Gold Color) */}
               <div className="flex justify-center mb-6">
                 {[...Array(5)].map((_, i) => (
                   <motion.svg
                     key={i}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    transition={{ delay: i * 0.1 }}
-                    className={`w-6 h-6 mx-1 ${
+                    transition={{ delay: i * 0.05 }}
+                    className={`w-5 h-5 mx-1 ${
                       i < testimonials[currentTestimonial].rating
-                        ? 'text-amber-500'
-                        : 'text-gray-300'
+                        ? 'text-[#DAA520]'
+                        : 'text-gray-700'
                     }`}
                     fill="currentColor"
                     viewBox="0 0 20 20"
@@ -115,35 +120,38 @@ export default function TestimonialsSection() {
                 ))}
               </div>
 
-              <div className="text-center">
-                <h4 className="font-bold text-xl md:text-2xl mb-2">
+              <div>
+                <h4 className="font-bold text-xl md:text-2xl text-white mb-1">
                   {testimonials[currentTestimonial].name}
                 </h4>
-                <p className="text-gray-500">{testimonials[currentTestimonial].role}</p>
+                <p className="text-blue-500 text-sm font-medium uppercase tracking-widest">
+                  {testimonials[currentTestimonial].role}
+                </p>
               </div>
             </motion.div>
           </AnimatePresence>
         </div>
 
-        <div className="flex justify-center items-center gap-4 mt-8">
+        {/* Navigation Dots */}
+        <div className="flex justify-center items-center gap-4 mt-10">
           {testimonials.map((_, index) => (
-            <Button
+            <button
               key={index}
               onClick={() => handleTestimonialChange(index)}
-              className={`w-3 h-3 p-0 rounded-full transition-all duration-300 ${
+              className={`h-1.5 transition-all duration-500 rounded-full ${
                 index === currentTestimonial
-                  ? 'bg-amber-500 scale-125'
-                  : 'bg-gray-400 hover:bg-amber-400'
+                  ? 'w-10 bg-blue-600'
+                  : 'w-4 bg-gray-700 hover:bg-gray-500'
               }`}
-              title={`View testimonial ${index + 1}`}
+              aria-label={`Go to testimonial ${index + 1}`}
             />
           ))}
         </div>
       </div>
 
-      {/* Decorative elements */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-amber-500 opacity-10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-2xl" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-500 opacity-10 rounded-full translate-x-1/3 translate-y-1/3 blur-2xl" />
+      {/* Decorative Branding Elements */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] -mr-64 -mt-64" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] -ml-64 -mb-64" />
     </section>
   )
 }

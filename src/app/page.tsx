@@ -1,11 +1,12 @@
 import React from "react";
 import HomePage from "@/components/HomePages/HomeHero";
-import FoodCategory from "@/components/HomePages/FoodCatagery";
-import OurChefs from "@/components/HomePages/OurChefs";
-import ChooseFromMenu from "@/components/HomePages/HomeMenu";
+import FoodCategory from "@/components/HomePages/Products Catogery";
+import ChooseFromMenu from "@/components/HomePages/Home about";
 import Aboutus from "@/components/HomePages/AboutUs";
 import TestimonialsSection from "@/components/HomePages/Testimonial";
-import BlogPost from "@/components/HomePages/BlogPosts";
+import ProductCategory from "@/components/HomePages/Products Catogery";
+import OrderProcess from "@/components/HomePages/orderguied";
+import FinalCTA from "@/components/HomePages/FinalCTA";
 
 const Home = () => {
   return (
@@ -17,19 +18,18 @@ const Home = () => {
       <Aboutus />
 
       {/* Categories component to display various categories */}
-      <FoodCategory />
+      <ProductCategory />
 
       {/* Choose from menu component to display menu items */}
       <ChooseFromMenu />
 
-      {/* Our Chefs component to display the chefs */}
-      <OurChefs />
+      { }
+        <OrderProcess/>
 
       {/* Testimonial component to display testimonial section */}
       <TestimonialsSection />
 
-      {/* Blog post component to display blog posts */}
-      <BlogPost />
+      <FinalCTA />
     </div>
   );
 };

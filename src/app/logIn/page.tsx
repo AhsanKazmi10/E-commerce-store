@@ -2,7 +2,6 @@ import Link from "next/link";
 // import { IoChevronForwardOutline } from "react-icons/io5";
 import { FcGoogle } from "react-icons/fc";
 import { ImAppleinc } from "react-icons/im";
-import { Input } from "@/components/ui/input";
 import Hero from "./LoginHero"
 import { Button } from "@/components/ui/button";
 
@@ -41,7 +40,7 @@ export default function SignInPage() {
               />
             </div>
             <div className="flex justify-self-start gap-2 items-center mb-4">
-              <Input type="checkbox" className="" />
+              <input type="checkbox" className="" />
               <span className="text-nowrap">Remember me?</span>
             </div>
             <Button

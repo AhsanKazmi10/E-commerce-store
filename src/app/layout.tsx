@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, Roboto_Mono } from "next/font/google";
+// @ts-ignore
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer/Footer";
@@ -15,8 +16,8 @@ const geistMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Food Tuck Restaurant",
-  description: "Welcome to Food Tuck Restaurant, where flavor meets convenience! Our passion is serving delicious, high-quality meals on the go, ensuring every bite is a delightful experience. Founded by Riaz Hussain, we bring a unique twist to traditional dishes, making us the perfect choice for food lovers everywhere.",
+  title: "H.B Enterprises Pvt. Ltd. - Premium Textile Labels & Patches",
+  description: "Welcome to H.B Enterprises Pvt. Ltd., where quality meets innovation! We specialize in providing premium textile labels and patches for various industries. Our commitment to excellence ensures that every product meets the highest standards of durability and aesthetics.",
 };
 
 export default function RootLayout({

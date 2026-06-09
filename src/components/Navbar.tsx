@@ -2,97 +2,100 @@
 
 import { useState } from 'react'
 import Link from "next/link"
-import { Menu, X, Search, ShoppingCart, User } from 'lucide-react'
-import { Button } from './ui/button';
+import { Menu, X, Search, ShoppingCart } from 'lucide-react'
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuItems = [
     { name: "Home", href: "/", active: true },
-    { name: "Menu", href: "/menu"},
-    { name: "Blog", href: "/blog" },
-    { name: "Pages", href: "/pages" },
-    { name: "About", href: "/about" },
-    { name: "Shop", href: "/shop" },
-    { name: "Contact", href: "/contact" },
+    { name: "Services", href: "/services", active: false },
+    { name: "About", href: "/about", active: false },
+    { name: "Shop", href: "/shop", active: false },
+    { name: "Contact", href: "/contact", active: false },
   ]
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen)
 
   return (
-    <header className="z-50 w-full bg-[#0D0D0D] sticky top-0 px-4 sm:px-6 lg:px-[15.62%] py-4 lg:py-7">
-      <nav className="flex items-center justify-between relative">
-        {/* Logo */}
-        <Link
-          href="/src/app/favicon.ico"
-          className="text-[20px] sm:text-[24px] leading-[32px] font-bold text-white z-50"
-        >
-          Food<span className="text-[#FF9F0D]">tuck</span>
+    <header className="z-50 w-full fixed top-0 px-4 py-4 md:px-10 lg:px-16">
+      <nav className="flex items-center justify-between relative max-w-[1920px] mx-auto">
+        
+        {/* LOGO SECTION */}
+        <Link href="/" className="z-50 group">
+          <div className="flex flex-col items-start text-left">
+            <div className="flex items-baseline italic">
+              <span className="text-2xl md:text-4xl font-[900] text-[#2563EB] tracking-tighter">H.B</span>
+              <span className="text-2xl md:text-4xl font-bold text-white ml-1.5">Enterprises</span>
+            </div>
+            <span className="text-[10px] md:text-[11px] uppercase tracking-[0.5em] font-bold text-[#2563EB] ml-1.5 mt-[-4px]">
+              Pvt. Ltd
+            </span>
+          </div>
         </Link>
 
-        {/* Mobile Menu Toggle */}
-        <Button
-          variant="ghost"
-          className="lg:hidden hover:text-white text-white z-50"
-          onClick={toggleMenu}
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </Button>
+        {/* DESKTOP MENU (Hidden on Mobile) */}
+        <div className="hidden lg:flex items-center gap-4">
+          {menuItems.map((item) => (
+            <Link 
+              key={item.name} 
+              href={item.href}
+              className={`
+                px-8 py-3 -skew-x-12 transition-all duration-300 relative group
+                ${item.active 
+                  ? "bg-[#2563EB] text-white shadow-[-8px_8px_0px_rgba(30,64,175,1)]" 
+                  : "bg-white/5 text-white/80 border-l-4 border-blue-600 backdrop-blur-md hover:bg-white/10"
+                }
+              `}
+            >
+              <span className="skew-x-12 block font-black uppercase tracking-tighter text-[15px]">
+                {item.name}
+              </span>
+            </Link>
+          ))}
+        </div>
 
-        {/* Navigation Links */}
+        {/* RIGHT ICONS & MOBILE BUTTON */}
+        <div className="flex items-center gap-3 md:gap-6">
+          <div className="hidden sm:flex items-center gap-4 text-white/70">
+            <Search className="w-5 h-5 cursor-pointer hover:text-blue-500" />
+            <ShoppingCart className="w-5 h-5 cursor-pointer hover:text-blue-500" />
+          </div>
+
+          {/* Hamburger Button (Only Visible on Mobile/Tablet) */}
+          <button 
+            className="lg:hidden p-2 bg-white/5 rounded-lg border border-white/10 text-white z-[60]"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
+
+        {/* MOBILE OVERLAY MENU */}
         <div className={`
-          fixed inset-0 bg-[#0D0D0D] flex flex-col items-center justify-center gap-6
-          lg:static lg:flex-row lg:bg-transparent lg:gap-[32px]
-          transition-all duration-300 ease-in-out
-          ${isMenuOpen 
-            ? 'opacity-100 visible translate-x-0' 
-            : 'opacity-0 invisible translate-x-full lg:translate-x-0 lg:opacity-100 lg:visible'}
-          absolute top-0 left-0 w-full h-screen lg:h-auto
+          fixed inset-0 bg-black/95 backdrop-blur-2xl z-50 flex flex-col items-center justify-center gap-6 transition-all duration-500 lg:hidden
+          ${isMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"}
         `}>
-          <ul className="flex flex-col lg:flex-row items-center gap-6 lg:gap-[32px]">
-            {menuItems.map((item) => (
-              <li key={item.name} className="w-full lg:w-auto text-center">
-                <Link
-                  href={item.href}
-                  className={`block w-full lg:w-auto text-[16px] leading-6 ${
-                    item.active ? "text-[#FF9F0D] font-bold" : "text-white"
-                  } font-inter hover:text-[#FF9F0D] transition-colors`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-
-          {/* Mobile Icons */}
-          <div className="lg:hidden flex items-center gap-4 mt-6">
-            <Link href="#" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="Search">
-              <Search size={24} />
+          {menuItems.map((item) => (
+            <Link 
+              key={item.name} 
+              href={item.href} 
+              onClick={() => setIsMenuOpen(false)}
+              className={`text-3xl font-black uppercase tracking-widest transition-colors
+                ${item.active ? 'text-[#2563EB]' : 'text-white hover:text-blue-400'}
+              `}
+            >
+              {item.name}
             </Link>
-            <Link href="/signup" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="User Profile">
-              <User size={24} />
-            </Link>
-            <Link href="/cart" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="Shopping Cart">
-              <ShoppingCart size={24} />
-            </Link>
+          ))}
+          
+          {/* Mobile Social Links */}
+          <div className="flex gap-8 mt-10 text-white/50">
+            <Search size={30} />
+            <ShoppingCart size={30} />
           </div>
         </div>
 
-        {/* Desktop Icons */}
-        <div className="hidden lg:flex items-center gap-4">
-          <Link href="#" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="Search">
-            <Search size={24} />
-          </Link>
-          <Link href="/signup" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="User Profile">
-            <User size={24} />
-          </Link>
-          <Link href="/cart" className="text-white hover:text-[#FF9F0D] transition-colors" aria-label="Shopping Cart">
-            <ShoppingCart size={24} />
-          </Link>
-        </div>
       </nav>
     </header>
   )

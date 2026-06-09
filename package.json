@@ -1,14 +1,13 @@
 {
   "name": "project-1",
   "version": "0.1.0",
-  "private": true,
+  "type": "module", 
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "data": "node ./scripts/import-data.mjs",
-    "type": "module"
+    "data": "node ./scripts/import-data.mjs"
   },
   "dependencies": {
     "18": "^0.0.0",

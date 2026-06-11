@@ -27,7 +27,7 @@ const ProductCategory = () => {
             { src: '/card-2.png', href: '/woven' },
             { src: '/card-3.png', href: '/Patches' },
             { src: '/card-1.png', href: '/satinLables' },
-            { src: '/card-4.png', href: '/Patches' }
+            { src: '/Card-4.png', href: '/Patches' }
           ].map((card, index) => (
             <Link href={card.href} key={index} className="relative group overflow-hidden rounded-sm w-full block">
               <div className="relative w-full aspect-square sm:aspect-[4/5]">

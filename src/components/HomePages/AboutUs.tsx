@@ -15,7 +15,7 @@ const Aboutus = () => {
   ];
 
   return (
-    <section className="border-gray-800 text-black py-16 md:py-24 px-4 md:px-10 border-b border-gray-100 border-gray-800" id="about">
+    <section className="bg-gray-150 text-black py-16 md:py-24 px-4 md:px-10 border-b border-gray-100 border-gray-800" id="about">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start ">
         
         {/* Left Content */}

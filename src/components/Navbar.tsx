@@ -7,10 +7,10 @@ import { User, ChevronDown } from 'lucide-react';
 
 const NAV_DATA = {
   topCards: [
-    { name: "H.B Home", short: "TRANSFERS", path: "/" },
-    { name: "H.B PATCHES", short: "BLANKS", path: "/Patches" },
-    { name: "H.B Woven Labels", short: "PATCHES", path: "/woven" },
-    { name: "H.B satin Lables", short: "PRINT", path: "/satinLables" },
+    { name: "H.B Home", short: "Home", path: "/" },
+    { name: "H.B PATCHES", short: "PATCHES", path: "/Patches" },
+    { name: "H.B Woven Labels", short: "WOVEN LABLES", path: "/woven" },
+    { name: "H.B satin Lables", short: "SATIN LABLES", path: "/satinLables" },
   ],
   categories: [
     { name: "Woven Nicks", path: "/woven-nicks" },
